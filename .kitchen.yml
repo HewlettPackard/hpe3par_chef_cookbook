@@ -1,0 +1,49 @@
+---
+driver:
+  #change settings accordingly
+  name: docker
+  docker: /usr/bin/docker
+  use_sudo: false
+  remove_images: true
+  provision_command: curl -L http://www.opscode.com/chef/install.sh | bash
+  dns:
+  #- mydns.com
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: 13.2.20
+  # You may wish to disable always updating cookbooks in CI or other testing environments.
+  # For example:
+  #   always_update_cookbooks: <%= !ENV['CI'] %>
+  always_update_cookbooks: true
+  http_proxy:
+  https_proxy:
+  no_proxy:
+
+provision_command:
+  - apt-get install -y build-essential
+
+driver_config:
+  http_proxy:
+  https_proxy:
+  no_proxy:
+  dns:
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-16.04
+    driver_config:
+      provision_command:
+         #- COPY .gemrc /root/
+         - apt-get install -y build-essential
+
+suites:
+  - name: default
+    run_list:
+      - recipe[test3par::virtual_volume]
+    verifier:
+      inspec_tests:
+        - test/smoke/default
+    attributes:
