@@ -19,10 +19,11 @@ module HPE3PAR
   module RestHelper
     WSAPI_URL = 'https://%s:8080/api/v1' unless const_defined?(:WSAPI_URL)
     DEBUG_MODE = false unless const_defined?(:DEBUG_MODE)
+    APP_TYPE = 'chef-3par' unless const_defined?(:APP_TYPE)
 
     def create_volume(storage_system, volume_name, cpg_name, size, size_unit, type = 'thin',
                       compression = false, snap_cpg = nil, debug = false)
-      cl = Hpe3parSdk::Client.new(WSAPI_URL % storage_system['ip'], debug: debug, app_type: 'chef-3par')
+      cl = Hpe3parSdk::Client.new(WSAPI_URL % storage_system['ip'], debug: debug, app_type: APP_TYPE)
       size_MiB = convert_to_binary_multiple(size, size_unit)
       tpvv = false
       tdvv = false
@@ -75,7 +76,7 @@ module HPE3PAR
     def modify_volume(storage_system, volume_name, new_name, expiration_time, retention_time, snap_cpg, user_cpg,
                       ss_spc_alloc_warning_pct, ss_spc_alloc_limit_pct, usr_spc_alloc_warning_pct, usr_spc_alloc_limit_pct,
                       rm_ss_spc_alloc_warning, rm_usr_spc_alloc_warning, rm_exp_time, rm_ss_spc_alloc_limit, rm_usr_spc_alloc_limit, debug = false)
-      cl = Hpe3parSdk::Client.new(WSAPI_URL % storage_system['ip'], debug: debug)
+      cl = Hpe3parSdk::Client.new(WSAPI_URL % storage_system['ip'], debug: debug, app_type: APP_TYPE)
       begin
         cl.login(storage_system['user'], storage_system['password'])
 
