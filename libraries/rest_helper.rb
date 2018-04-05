@@ -19,7 +19,7 @@ module HPE3PAR
   module RestHelper
     WSAPI_URL = 'https://%s:8080/api/v1' unless const_defined?(:WSAPI_URL)
     DEBUG_MODE = false unless const_defined?(:DEBUG_MODE)
-    APP_TYPE = 'chef-3par'
+    APP_TYPE = 'chef-3par' unless const_defined?(:APP_TYPE)
 
     def create_volume(storage_system, volume_name, cpg_name, size, size_unit, type = 'thin',
                       compression = false, snap_cpg = nil, debug = false)
