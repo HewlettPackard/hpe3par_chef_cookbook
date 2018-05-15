@@ -12,7 +12,7 @@
 actions :create, :delete, :add_volume, :remove_volume
 default_action :create
 property :storage_system, kind_of: Hash, required: true
-property :volume_set_name, kind_of: String, required: true, name_attribute: true, callbacks: {
+property :volume_set_name, kind_of: String, required: true, name_property: true, callbacks: {
   'Name of the volume set should not exceed 27 characters' => lambda {
     |name| name.length > 0 && name.length < 28
   }

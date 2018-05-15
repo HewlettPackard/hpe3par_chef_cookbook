@@ -9,7 +9,9 @@ This cookbook is not intended to include any recipes. Use it by creating a new c
 **Note: The cookbook name is 'hpe3par'. If you want to directly use from source, you need to rename the directory hpe3par_chef_cookbook to hpe3par in order to use the resources.**
 
 # Requirements
-* 3PAR OS - 3.2.2 MU6, 3.3.1 MU1
+* 3PAR OS
+    * 3.2.2 MU4 + 106, MU6 + P107
+    * 3.3.1 MU2
 * Ruby - 2.4.x
 * Chef - 12.x
 * WSAPI service should be enabled on the 3PAR storage array.

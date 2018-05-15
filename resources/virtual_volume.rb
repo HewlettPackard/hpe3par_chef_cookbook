@@ -12,7 +12,7 @@
 actions :create, :delete, :modify, :grow, :grow_to_size, :change_snap_cpg, :change_user_cpg, :convert_type, :set_snap_cpg
 default_action :create
 
-property :volume_name, kind_of: String, required: true, name_attribute: true, callbacks: {
+property :volume_name, kind_of: String, required: true, name_property: true, callbacks: {
   'Name of the volume should not exceed 31 characters' => lambda {
     |name| name.length > 0 && name.length < 32
   }

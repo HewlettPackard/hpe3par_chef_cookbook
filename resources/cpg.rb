@@ -12,7 +12,7 @@
 actions :create, :delete
 default_action :create
 
-property :cpg_name, kind_of: String, required: true, name_attribute: true, callbacks: {
+property :cpg_name, kind_of: String, required: true, name_property: true, callbacks: {
   'Name of the CPG should not exceed 31 characters' => lambda {
     |name| name.length > 0 && name.length < 32
   }

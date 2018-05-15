@@ -14,7 +14,7 @@ actions :export_volume_to_host, :export_volume_to_hostset, :export_volumeset_to_
         :unexport_volumeset_to_host, :unexport_volumeset_to_hostset
 default_action :export_volume_to_host
 
-property :volume_name, kind_of: String, required: true,name_attribute: true
+property :volume_name, kind_of: String, required: true,name_property: true
 property :lunid, kind_of: Integer
 property :storage_system, kind_of: Hash, required: true
 property :volumeset_name, kind_of: String

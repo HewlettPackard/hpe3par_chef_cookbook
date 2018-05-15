@@ -13,7 +13,7 @@ actions :create, :delete, :add_host, :remove_host
 default_action :create
 
 property :storage_system, kind_of: Hash, required: true
-property :host_set_name, kind_of: String, required: true, name_attribute: true, callbacks: {
+property :host_set_name, kind_of: String, required: true, name_property: true, callbacks: {
   'Name of the Host set should not exceed 27 characters' => lambda {
     |name| name.length > 0 && name.length < 28
   }

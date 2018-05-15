@@ -12,7 +12,7 @@
 actions :create, :delete, :modify, :restore_online, :restore_offline
 default_action :create
 property :storage_system, kind_of: Hash, required: true
-property :snapshot_name, kind_of: String, required: true, name_attribute: true, callbacks: {
+property :snapshot_name, kind_of: String, required: true, name_property: true, callbacks: {
   'Name of the snapshot should not exceed 31 characters' => lambda {
     |name| name.length > 0 && name.length < 32
   }

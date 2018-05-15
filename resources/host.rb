@@ -12,7 +12,7 @@
 actions :create, :delete, :modify, :add_fc_path_to_host, :remove_fc_path_from_host, :add_iscsi_path_to_host, :remove_iscsi_path_from_host, :add_initiator_chap, :remove_initiator_chap, :add_target_chap,:remove_target_chap
 default_action :create
 
-property :host_name, kind_of: String, required: true, name_attribute: true, callbacks: {
+property :host_name, kind_of: String, required: true, name_property: true, callbacks: {
   'Name of the Host should not exceed 31 characters' => lambda {
     |name| name.length > 0 && name.length < 32
   }

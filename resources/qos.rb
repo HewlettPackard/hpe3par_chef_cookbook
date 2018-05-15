@@ -12,7 +12,7 @@
 actions :create, :delete, :modify
 default_action :create
 
-property :qos_target_name, kind_of: String, required: true, name_attribute: true
+property :qos_target_name, kind_of: String, required: true, name_property: true
 property :storage_system, kind_of: Hash, required: true
 property :type, kind_of: String, equal_to: %w[vvset sys]
 property :priority, kind_of: String, default:'LOW', equal_to: %w[LOW NORMAL HIGH]
